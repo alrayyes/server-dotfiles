@@ -1,5 +1,5 @@
 # Paths
-set folder = ~/mail
+set folder = ~/Maildir
 set header_cache = ~/.mutt/cache/headers
 set message_cachedir = ~/.mutt/cache/bodies
 set mailcap_path = ~/.mailcap
@@ -9,6 +9,7 @@ set signature = ~/.mutt/sig
 # Basic options
 set wait_key = no
 set mbox_type = Maildir
+set spoolfile=+/
 set timeout = 3
 set mail_check = 0
 set move = no  
@@ -102,14 +103,6 @@ macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "ma
 macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
 macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
 
-# Switch between mailboxes
-macro index <f1> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.alrayyes<enter><change-folder>!<enter>'
-macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.nl.andthensome.ryan<enter><change-folder>!<enter>'
-
-# Sync email
-macro index O "<shell-escape>offlineimap -o <enter>"           "run offlineimap to sync all mail"
-macro index o "<shell-escape>offlineimap -o -qf INBOX<enter>" "run offlineimap to sync inbox"
-
 # Open links with urlview
 macro pager \Cu "|urlview<enter>"
 
@@ -133,16 +126,5 @@ color body brightred default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
 color body brightblue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
 color sidebar_new       color221 color233
 
-# Goobook
-set query_command="goobook query %s"
-macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
-bind editor <Tab> complete-query
-
-# Notmuch
-#set virtual_spoolfile=yes
-#source ~/.mutt/notmuchmailboxes
-
-source ~/.mutt/mailboxes
-source ~/.mutt/account.com.gmail.alrayyes
 source ~/.mutt/muttcol
 source ~/.mutt/gpg.rc
