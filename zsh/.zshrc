@@ -1,11 +1,11 @@
-# If you come from bash you might have to change your $PATH.
+# Ifkyou come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Stop tmux bitching about 256 colours
-export TERM="xterm-256color"
+TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/alrayyes/.oh-my-zsh
+ZSH="/home/alrayyes/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -55,7 +55,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws archlinux bower common-aliases composer docker git git-flow pass sudo symfony2 systemd tmux)
+plugins=(aws archlinux bower common-aliases composer docker git git-flow pass sudo symfony2 systemd tmux fzf gitignore )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,14 +88,38 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# nvim alias
+alias vim="nvim"
+
+# ls alias
+alias ls="lsd"
+alias l="lsd -al"
+
+# vifm alias
+alias vifm="vifmrun"
+
+transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
+tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://share.higherlearning.eu/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://share.higherlearning.eu/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
+transferats() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
+tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://share.andthensome.nl/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://share.andthensome.nl/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
+
 # Emberjs settings
-export PATH="$PATH:/home/alrayyes/.config/yarn/global/node_modules/.bin"
+export PATH="$PATH:/home/alrayyes/.config/yarn/global/node_modules/.bin:/home/alrayyes/.scripts"
 
 # Set GPG TTY
-export GPG_TTY=$(tty)
+export GPG_TTY="$(tty)"
 
 # Set default browser
-export BROWSER=firefox
+export BROWSER="firefox"
+
+# Set default terminal
+export TERMINAL="st"
+
+# pkg editor
+export VISUAL="vim"
+
+# Enable password store extensions
+export PASSWORD_STORE_ENABLE_EXTENSIONS="true"
 
 # Refresh gpg-agent tty in case user switches into an X session
 gpg-connect-agent updatestartuptty /bye >/dev/null

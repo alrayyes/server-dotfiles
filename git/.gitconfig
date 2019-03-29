@@ -3,12 +3,20 @@
     email = ryan@andthensome.nl
 
 [core]
-    editor = vim
+    editor = nvim
 	excludesfile = /home/alrayyes/.gitignore_global
 
 [push]
     default = matching
 [user]
-	email = ryan@andthensome.nl
-	name = Ryan
+	email = alrayyes@gmail.com
+	name = Ryan Kes
 	signingkey = alrayyes@gmail.com
+[sendemail]
+    confirm = auto
+
+[sendemail]
+    smtpEncryption = tls
+    smtpServer = /usr/bin/msmtp
+    confirm = auto
+    chainreplyto = false
