@@ -14,13 +14,14 @@ A repository of my personal server configuration files.
 # Packages
 
 * [git](https://git-scm.com/)
-* [mutt](http://www.mutt.org/)
+* [neomutt](https://neomutt.org/)
+* [neovim](https://neovim.io/)
 * [tmux](https://tmux.github.io/)
-* [vim](http://www.vim.org/)
+* [vifm](https://vifm.info/)
 * [zsh](https://www.zsh.org/)
 
 # License
 
 This theme is released under the MIT License. For more information read the [license][license].
 
-[license]: https://github.com/alrayyes/server-dotfiles/blob/master/LICENSE.md
+[license]: LICENSE.md
