@@ -13,8 +13,6 @@ A repository of my personal server configuration files.
 ```
 # Packages
 
-* [git](https://git-scm.com/)
-* [neomutt](https://neomutt.org/)
 * [neovim](https://neovim.io/)
 * [tmux](https://tmux.github.io/)
 * [vifm](https://vifm.info/)
