@@ -90,10 +90,7 @@ source $ZSH/oh-my-zsh.sh
 
 # nvim alias
 alias vim="nvim"
-
-# ls alias
-alias ls="lsd"
-alias l="lsd -al"
+alias vi="nvim"
 
 # vifm alias
 alias vifm="vifmrun"
@@ -120,6 +117,9 @@ export VISUAL="vim"
 
 # Enable password store extensions
 export PASSWORD_STORE_ENABLE_EXTENSIONS="true"
+
+# Set gopath
+export GOPATH=$HOME/go
 
 # Refresh gpg-agent tty in case user switches into an X session
 gpg-connect-agent updatestartuptty /bye >/dev/null
