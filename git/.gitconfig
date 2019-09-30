@@ -1,0 +1,14 @@
+[name]
+    name = Ryan
+    email = ryan@andthensome.nl
+
+[core]
+    editor = nvim
+	excludesfile = /home/alrayyes/.gitignore_global
+
+[push]
+    default = matching
+[user]
+	email = alrayyes@gmail.com
+	name = Ryan Kes
+	signingkey = alrayyes@gmail.com
