@@ -14,6 +14,7 @@ A repository of my personal server configuration files.
 # Packages
 
 * [git](https://git-scm.com/)
+* [lf](https://github.com/gokcehan/lf)
 * [neomutt](https://neomutt.org/)
 * [neovim](https://neovim.io/)
 * [tmux](https://tmux.github.io/)
