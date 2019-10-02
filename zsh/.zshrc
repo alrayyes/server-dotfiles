@@ -22,10 +22,6 @@ source $ZSH/oh-my-zsh.sh
 alias vim="nvim"
 alias vi="nvim"
 
-# ls alias
-alias ls="lsd"
-alias l="lsd -al"
-
 # vifm alias
 alias vifm="vifmrun"
 
