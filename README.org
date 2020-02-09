@@ -18,7 +18,7 @@
 - [[#license][License]]
 
 * Description
-A repository of my personal configuration files.
+A repository of my personal server configuration files.
 
 ** Maintainers
 + [[https://github.com/alrayyes][@alrayyes]]
