@@ -1,52 +1,60 @@
-# Stop tmux bitching about 256 colours
-TERM="xterm-256color"
+source_if_exists() {
+	if [[ -f $1 ]]; then
+		source $1
+	fi
+}
 
-# Path to your oh-my-zsh installation.
-ZSH="/home/alrayyes/.oh-my-zsh"
+# Check if zplug is installed
+if [[ ! -d ~/.zplug ]]; then
+	git clone https://github.com/b4b4r07/zplug ~/.zplug
+fi
+source ~/.zplug/init.zsh
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# Spaceship theme
+zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(aws common-aliases composer docker extract git git-flow gitignore httpie rsync symfony2 systemd tmux vi-mode fzf sudo yarn zsh-syntax-highlighting )
+# Oh my zsh lugins
+# sudo must start after vi-mode for it to work properly
+zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/docker-compose", from:oh-my-zsh
+zplug "plugins/extract", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/gitignore", from:oh-my-zsh
+zplug "plugins/ripgrep", from:oh-my-zsh
+zplug "plugins/rsync", from:oh-my-zsh
+zplug "plugins/systemd", from:oh-my-zsh
+zplug "plugins/tmux", from:oh-my-zsh
+zplug "plugins/vi-mode", from:oh-my-zsh
+zplug "plugins/sudo", from:oh-my-zsh
+zplug "zsh-users/zsh-autosuggestions", from:github, defer:3
+zplug "zsh-users/zsh-syntax-highlighting", from:github, defer:3
 
-source $ZSH/oh-my-zsh.sh
+# Install packages
+if ! zplug check --verbose; then
+	printf "Install zplug plugins? [y/N]: "
+	if read -q; then
+		echo
+		zplug install
+	fi
+fi
+
+zplug load
 
 # nvim alias
 alias vim="nvim"
 alias vi="nvim"
 
+# ls alias
+alias ls="exa"
+alias l="exa -al"
+
 # vifm alias
 alias vifm="vifmrun"
 
-# Add yarn path
-export PATH="$PATH:/home/alrayyes/.config/yarn/global/node_modules/.bin:/home/alrayyes/.scripts"
-
-# Set GPG TTY
-export GPG_TTY="$(tty)"
-
-# Set default browser
-export BROWSER="firefox"
-
-# Set default terminal
-export TERMINAL="st"
-
-# pkg editor
-export VISUAL="vim"
-
-# Enable password store extensions
-export PASSWORD_STORE_ENABLE_EXTENSIONS="true"
-
-# Set gopath
-export GOPATH=$HOME/go
-
 # Refresh gpg-agent tty in case user switches into an X session
 gpg-connect-agent updatestartuptty /bye >/dev/null
+
+source_if_exists ~/.fzf/key-bindings.zsh
+source_if_exists ~/.fzf/completion.zsh
 
 neofetch
