@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+for d in $(ls -d */ | cut -f1 -d '/'); do
+	(stow $d)
+done
+
+# Install vim plugins & requirements
+if [ ! "$(pip list --user | grep 'pynvim' | wc -l)" -ge 1 ]; then
+	pip install --user pynvim
+fi
+nvim +PlugInstall +qall
+
+# Create nvim config directory if it doesn't exist
+if [ ! -d ~/.config/nvim ]; then
+	echo "Creating ~/.config/nvim"
+	mkdir -p ~/.config/nvim
+fi
