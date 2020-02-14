@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Create nvim config directory if it doesn't exist
+if [ ! -d ~/.config/nvim ]; then
+	echo "Creating ~/.config/nvim"
+	mkdir -p ~/.config/nvim
+fi
+
 for d in $(ls -d */ | cut -f1 -d '/'); do
 	(stow $d)
 done
@@ -8,10 +14,12 @@ done
 if [ ! "$(pip list --user | grep 'pynvim' | wc -l)" -ge 1 ]; then
 	pip install --user pynvim
 fi
-nvim +PlugInstall +qall
 
-# Create nvim config directory if it doesn't exist
-if [ ! -d ~/.config/nvim ]; then
-	echo "Creating ~/.config/nvim"
-	mkdir -p ~/.config/nvim
+# Install zplug if it doesn't exist yet
+if [ ! -d ~/.zplug ]; then
+	echo "Installing zplug"
+	curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
+
+# Install nvim pluugins
+nvim +PlugInstall +qall
