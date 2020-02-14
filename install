@@ -7,6 +7,7 @@ if [ ! -d ~/.config/nvim ]; then
 fi
 
 for d in $(ls -d */ | cut -f1 -d '/'); do
+	echo "Linking $d..."
 	(stow $d)
 done
 
