@@ -38,6 +38,7 @@ A repository of my personal server configuration files.
 - [[http://www.gnu.org/software/stow/][stow]]
 
 * Applications
+- [[https://github.com/sharkdp/bat][bat]]
 - [[https://github.com/alacritty/alacritty][alacritty]]
 - [[https://the.exa.website/][exa]]
 - [[https://git-scm.com/][git]]
