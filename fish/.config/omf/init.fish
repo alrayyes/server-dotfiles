@@ -40,6 +40,9 @@ alias l="exa -al"
 # vifm alias
 alias vifm="vifmrun"
 
+# git alaises
+alias gpoat="git push origin --all && git push origin --tags"
+
 # Set fzf keybindings here for now as they don't work with stable version of omf https://github.com/jethrokuan/fzf/issues/109
 bind \co '__fzf_find_file'
 bind \cr '__fzf_reverse_isearch'
