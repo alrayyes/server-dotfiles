@@ -12,8 +12,12 @@
   - [[#theme][Theme]]
   - [[#plugin-manager][Plugin Manager]]
   - [[#plugins][Plugins]]
+- [[#fish][Fish]]
+    - [[#theme-1][Theme]]
+    - [[#package-manager][Package Manager]]
+    - [[#packages][Packages]]
 - [[#neovim][Neovim]]
-  - [[#theme-1][Theme]]
+  - [[#theme-2][Theme]]
   - [[#plugin-manager-1][Plugin Manager]]
   - [[#plugins-1][Plugins]]
     - [[#general][General]]
@@ -34,6 +38,7 @@ A repository of my personal server configuration files.
 - [[http://www.gnu.org/software/stow/][stow]]
 
 * Applications
+- [[https://github.com/alacritty/alacritty][alacritty]]
 - [[https://the.exa.website/][exa]]
 - [[https://git-scm.com/][git]]
 - [[https://gnupg.org/][gnupg]]
@@ -61,6 +66,20 @@ A repository of my personal server configuration files.
 - [[https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vi-mode][vi-mode]]
 - [[https://github.com/zsh-users/zsh-autosuggestions][zsh-autosuggestions]]
 - [[https://github.com/zsh-users/zsh-syntax-highlighting][zsh-syntax-highlighting]]
+ 
+* Fish
+*** Theme
+- [[https://github.com/oh-my-fish/theme-bobthefish][bobthefish]]
+*** Package Manager
+- [[https://github.com/oh-my-fish/oh-my-fish][oh-my-fish]]
+*** Packages
+- [[https://github.com/patrickf3139/Colored-Man-Pages][colored-man-pages]]
+- [[https://github.com/oh-my-fish/plugin-extract][extract]]
+- [[https://github.com/jethrokuan/fzf][fzf]]
+- [[https://github.com/oh-my-fish/plugin-gi][gi]]
+- [[https://github.com/oh-my-fish/plugin-git-flow][git-flow]]
+- [[https://github.com/oh-my-fish/plugin-sudope.git][sudope]]
+- [[https://github.com/oh-my-fish/plugin-wttr][wttr]]
 
 * Neovim
 ** Theme

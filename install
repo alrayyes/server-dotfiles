@@ -1,20 +1,30 @@
 #!/usr/bin/env bash
 
+function mkdir_if_not_exist() {
+	if [ ! -d "$1" ]; then
+		echo "Creating $1"
+		mkdir -p "$1"
+	fi
+}
+
+mkdir_if_not_exist ~/.config/nvim
+mkdir_if_not_exist ~/.config/fish
+mkdir_if_not_exist ~/.config/omf
+mkdir_if_not_exist ~/.terminfo
+
 # Create nvim config directory if it doesn't exist
-if [ ! -d ~/.config/nvim ]; then
-	echo "Creating ~/.config/nvim"
-	mkdir -p ~/.config/nvim
-fi
 
 for d in $(ls -d */ | cut -f1 -d '/'); do
 	echo "Linking $d..."
 	(stow $d)
 done
 
-# Install zplug if it doesn't exist yet
-if [ ! -d ~/.zplug ]; then
-	echo "Installing zplug"
-	curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+if [ -f /usr/bin/zsh ]; then
+	# Install zplug if it doesn't exist yet
+	if [ ! -d ~/.zplug ]; then
+		echo "Installing zplug"
+		curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+	fi
 fi
 
 # Install vim plugins & requirements
@@ -29,3 +39,7 @@ if [ ! -d ~/.config/nvim/plugged ]; then
 fi
 # Install nvim pluugins
 nvim +PlugInstall +qall
+
+if [ -f /usr/bin/fish ]; then
+	./install.fish
+fi
