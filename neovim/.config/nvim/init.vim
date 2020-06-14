@@ -36,7 +36,6 @@
         Plug 'airblade/vim-gitgutter'
         Plug 'dense-analysis/ale'
         Plug 'godlygeek/tabular'
-        Plug 'neoclide/coc.nvim', {'branch': 'release'}
         Plug 'preservim/nerdcommenter'
         Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
         Plug 'sheerun/vim-polyglot'
@@ -157,31 +156,6 @@
 
     " hexokinase {
         set termguicolors
-    " }
-
-    " haskell {
-        autocmd BufWrite *.hs :%!stylish-haskell
-    " }
-
-    " coc {
-        vmap <leader>f  <Plug>(coc-format-selected)
-        nmap <leader>f  <Plug>(coc-format-selected)
-
-        " Run jest for current project
-        command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
-
-        " Run jest for current file
-        command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
-
-        " Run jest for current test
-        nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
-
-        " Init jest in current cwd, require global jest command exists
-        command! JestInit :call CocAction('runCommand', 'jest.init')
-
-        " use <Tab> and <S_tab> to navigate completion list
-        inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
     " }
 
     " ale {
