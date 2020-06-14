@@ -38,14 +38,12 @@ A repository of my personal server configuration files.
 - [[http://www.gnu.org/software/stow/][stow]]
 
 * Applications
-- [[https://github.com/alacritty/alacritty][alacritty]]
 - [[https://the.exa.website/][exa]]
+- [[https://github.com/junegunn/fzf][fzf]]
 - [[https://git-scm.com/][git]]
-- [[https://gnupg.org/][gnupg]]
 - [[https://github.com/gokcehan/lf][lf]]
 - [[https://neovim.io/][neovim]]
 - [[https://tmux.github.io/][tmux]]
-- [[https://vifm.info/][vifm]]
 
 * Zsh
 ** Theme
@@ -56,6 +54,7 @@ A repository of my personal server configuration files.
 - [[https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker][docker]]
 - [[https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose][docker-compose]]
 - [[https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/extract][extract]]
+- [[https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf][fzf]]
 - [[https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git][git]]
 - [[https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/gitignore][gitignore]]
 - [[https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ripgrep][ripgrep]]
@@ -64,6 +63,7 @@ A repository of my personal server configuration files.
 - [[https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/systemd][systemd]]
 - [[https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/tmux][tmux]]
 - [[https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vi-mode][vi-mode]]
+- [[https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/yarn][yarn]]
 - [[https://github.com/zsh-users/zsh-autosuggestions][zsh-autosuggestions]]
 - [[https://github.com/zsh-users/zsh-syntax-highlighting][zsh-syntax-highlighting]]
  
@@ -89,14 +89,13 @@ A repository of my personal server configuration files.
 ** Plugins
 *** General
 - [[https://github.com/bling/vim-bufferline][bling/vim-bufferline]]
-- [[easymotion/vim-easymotion]]
+- [[https://github.com/ctrlpvim/ctrlp.vim][ctrlp/ctrlp.vim]]
 - [[https://github.com/farmergreg/vim-lastplace][farmergreg/vim-lastplace]]
-- [[https://github.com/jiangmiao/auto-pairs][jiangmiao/auto-pairs]]
-- [[https://github.com/kien/ctrlp.vim][kien/ctrlp.vim]]
+-[[https://github.com/junegunn/fzf][ junegunn/fzf]]
+- [[https://github.com/justinmk/vim-sneak][justinmk/vim-sneak]]
 - [[https://github.com/mbbill/undotree][mbbill/undotree]]
 - [[https://github.com/mhinz/vim-signify][mhinz/vim-signify]]
 - [[https://github.com/myusuf3/numbers.vim][myusuf3/numbers.vim]]
-- [[https://github.com/nathanaelkane/vim-indent-guides][nathanaelkane/vim-indent-guides]]
 - [[https://github.com/preservim/nerdtree][preservim/nerdtree]]
 - [[https://github.com/rhysd/conflict-marker.vim][rhysd/conflict-marker.vim]]
 - [[https://github.com/terryma/vim-multiple-cursors][terryma/vim-multiple-cursors]]
@@ -104,13 +103,16 @@ A repository of my personal server configuration files.
 - [[https://github.com/tpope/vim-surround][tpope/vim-surround]]
 - [[https://github.com/vim-airline/vim-airline][vim-airline/vim-airline]]
 *** Programming
-- [[https://github.com/autozimu/LanguageClient-neovim][autozimu/LanguageClient-neovim]]
+- [[https://github.com/airblade/vim-gitgutter][airblade/vim-gitgutter]]
+- [[https://github.com/dense-analysis/ale][dense-analysis/ale]]
 - [[https://github.com/godlygeek/tabular][godlygeek/tabular]]
-- [[https://github.com/majutsushi/tagbar][majutsushi/tagbar]]
+- [[https://github.com/neoclide/coc.nvim][neoclice/coc.nvim]]
 - [[https://github.com/preservim/nerdcommenter][preservim/nerdcommenter]]
-- [[https://github.com/Shougo/deoplete.nvim][Shougo/deoplete.nvim]]
+- [[https://github.com/RRethy/vim-hexokinase][RRethy/vim-hexokinase]]
+- [[https://github.com/sheerun/vim-polyglot][sheerun/vim-polyglot]]
 - [[https://github.com/tpope/vim-fugitive][tpope/vim-fugitive]]
 - [[https://github.com/Xuyuanp/nerdtree-git-plugin][Xuyuanp/nerdtree-git-plugin]]
+-[[https://github.com/Yggdroot/indentLine][ Yggdroot/indentLine]]
 *** UI
 - [[https://github.com/morhetz/gruvbox][morhetz/gruvbox]]
 - [[https://github.com/ryanoasis/vim-devicons][ryanoasis/vim-devicons]]

@@ -13,15 +13,17 @@
     call plug#begin()
 
     " General {
+        " Navigation {
+            Plug 'unblevable/quick-scope'
+        " }
         Plug 'bling/vim-bufferline'
-        Plug 'easymotion/vim-easymotion'
         Plug 'farmergreg/vim-lastplace'
-        Plug 'jiangmiao/auto-pairs'
-        Plug 'kien/ctrlp.vim'
+        Plug 'junegunn/fzf'
+        Plug 'justinmk/vim-sneak'
+        Plug 'ctrlpvim/ctrlp.vim'
         Plug 'mbbill/undotree'
         Plug 'mhinz/vim-signify'
         Plug 'myusuf3/numbers.vim'
-        Plug 'nathanaelkane/vim-indent-guides'
         Plug 'preservim/nerdtree'
         Plug 'rhysd/conflict-marker.vim'
         Plug 'terryma/vim-multiple-cursors'
@@ -29,23 +31,20 @@
         Plug 'tpope/vim-surround'
         Plug 'vim-airline/vim-airline'
     " }
-    
 
     " Programming {
-        Plug 'autozimu/LanguageClient-neovim', {
-            \ 'branch': 'next',
-            \ 'do': 'bash install.sh',
-            \ }
+        Plug 'airblade/vim-gitgutter'
+        Plug 'dense-analysis/ale'
         Plug 'godlygeek/tabular'
-        if executable('ctags')
-            Plug 'majutsushi/tagbar'
-        endif
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}
         Plug 'preservim/nerdcommenter'
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+        Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+        Plug 'sheerun/vim-polyglot'
         Plug 'tpope/vim-fugitive'
         Plug 'Xuyuanp/nerdtree-git-plugin'
+        Plug 'Yggdroot/indentLine'
     " }
-    
+
     " UI {
         Plug 'morhetz/gruvbox'
         " This has to be loaded last to work
@@ -78,6 +77,7 @@
     highlight clear LineNr     " Current line number row will have same background color in relative mode
 
     set ignorecase             " Ignore case on search
+    set smartcase              " Don't ignore upper case characters on search
     set scrolljump=5           " Lines to scroll when cursor leaves screen
     set scrolloff=3            " Minimum lines to keep above and below cursor
     set foldenable             " Auto fold code
@@ -110,6 +110,16 @@
     vnoremap < <gv
     vnoremap > >gv
 
+    " LanguageClient-neovim
+    nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+    map <Leader>lk :call LanguageClient#textDocument_hover()<CR>
+    map <Leader>lg :call LanguageClient#textDocument_definition()<CR>
+    map <Leader>lr :call LanguageClient#textDocument_rename()<CR>
+    map <Leader>lf :call LanguageClient#textDocument_formatting()<CR>
+    map <Leader>lb :call LanguageClient#textDocument_references()<CR>
+    map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
+    map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
+
     " For when you forget to sudo.. Really Write the file.
     cmap w!! w !sudo tee % >/dev/null
 " }
@@ -135,13 +145,6 @@
         map <C-e> :NERDTreeToggle<CR>
     " }
 
-    " Tagbar {
-        if executable('ctags')
-            " Tagbar panel
-            map <Leader>tt :TagbarToggle<CR>
-        endif
-    " }
-    
     " NerdCommenter {
         " Add spaces after comment delimiters by default
         let g:NERDSpaceDelims = 1
@@ -152,8 +155,47 @@
         let g:airline_powerline_fonts=1
     " }
 
-    " Deoplete {
-        " Load deoplete on startup
-        let g:deoplete#enable_at_startup = 1
+    " hexokinase {
+        set termguicolors
+    " }
+
+    " haskell {
+        autocmd BufWrite *.hs :%!stylish-haskell
+    " }
+
+    " coc {
+        vmap <leader>f  <Plug>(coc-format-selected)
+        nmap <leader>f  <Plug>(coc-format-selected)
+
+        " Run jest for current project
+        command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
+
+        " Run jest for current file
+        command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
+
+        " Run jest for current test
+        nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
+
+        " Init jest in current cwd, require global jest command exists
+        command! JestInit :call CocAction('runCommand', 'jest.init')
+
+        " use <Tab> and <S_tab> to navigate completion list
+        inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    " }
+
+    " ale {
+        " Shortcuts jump between linting errors
+        map <silent> [c <Plug>(ale_previous_wrap)
+        nmap <silent> ]c <Plug>(ale_next_wrap)
+
+        let g:ale_sign_error = '❌'
+        let g:ale_sign_warning = '⚠️'
+
+        " Fix files
+        let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
+
+        " Fix files automatically on save
+        let g:ale_fix_on_save = 1
     " }
 " }
