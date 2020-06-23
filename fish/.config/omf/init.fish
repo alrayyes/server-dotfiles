@@ -39,22 +39,22 @@ set -xg RUSTUP_HOME ~/.local/share/rustup
 set -xg GOPATH ~/.local/share/go
 
 # nvim alias
-alias v="nvim"
-alias sv="sudo nvim"
+abbr --add v "nvim"
+abbr --add sv "sudo nvim"
 
 # ls alias
-alias ls="exa"
-alias l="exa -al"
+abbr --add ls "exa"
+abbr --add l "exa -al"
 
 # git alaises
-alias gpoat="git push origin --all && git push origin --tags"
-alias gs="git status"
-alias gd="git diff"
-alias g="git"
+abbr --add gpoat "git push origin --all && git push origin --tags"
+abbr --add gs "git status"
+abbr --add gd "git diff"
+abbr --add g "git"
 
 # Prevent mv & rm oopsies
-alias mv="mv -i"
-alias rm="rm -i"
+abbr --add mv "mv -i"
+abbr --add rm "rm -i"
 
 # Load lfcd wiith proper icons
 function lf
@@ -222,7 +222,7 @@ end
 
 
 # bat
-alias bat="batcat"
+abbr --add bat "batcat"
 
 # Set fzf keybindings here for now as they don't work with stable version of omf https://github.com/jethrokuan/fzf/issues/109
 bind \co '__fzf_find_file'
