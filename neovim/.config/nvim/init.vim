@@ -17,10 +17,9 @@
             Plug 'unblevable/quick-scope'
         " }
         Plug 'bling/vim-bufferline'
+        Plug 'easymotion/vim-easymotion'
         Plug 'farmergreg/vim-lastplace'
-        Plug 'junegunn/fzf'
-        Plug 'justinmk/vim-sneak'
-        Plug 'ctrlpvim/ctrlp.vim'
+        Plug 'junegunn/fzf.vim'
         Plug 'mbbill/undotree'
         Plug 'mhinz/vim-signify'
         Plug 'myusuf3/numbers.vim'
@@ -34,8 +33,10 @@
 
     " Programming {
         Plug 'airblade/vim-gitgutter'
+        Plug 'alvan/vim-closetag'
         Plug 'dense-analysis/ale'
         Plug 'godlygeek/tabular'
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}
         Plug 'preservim/nerdcommenter'
         Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
         Plug 'sheerun/vim-polyglot'
@@ -159,6 +160,27 @@
         set termguicolors
     " }
 
+    " coc {
+        vmap <leader>f  <Plug>(coc-format-selected)
+        nmap <leader>f  <Plug>(coc-format-selected)
+
+        " Run jest for current project
+        command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
+
+        " Run jest for current file
+        command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
+
+        " Run jest for current test
+        nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
+
+        " Init jest in current cwd, require global jest command exists
+        command! JestInit :call CocAction('runCommand', 'jest.init')
+
+        " use <Tab> and <S_tab> to navigate completion list
+        inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    " }
+
     " ale {
         " Shortcuts jump between linting errors
         map <silent> [c <Plug>(ale_previous_wrap)
@@ -168,9 +190,42 @@
         let g:ale_sign_warning = '⚠️'
 
         " Fix files
-        let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
+        let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'sh': ['shfmt'], 'json': ['prettier']}
 
         " Fix files automatically on save
         let g:ale_fix_on_save = 1
+    " }
+
+    " easymotion {
+        let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+        " Jump to anywhere you want with minimal keystrokes, with just one key binding.
+        " `s{char}{label}`
+        nmap s <Plug>(easymotion-overwin-f)
+        " or
+        " `s{char}{char}{label}`
+        " Need one more keystroke, but on average, it may be more comfortable.
+        nmap s <Plug>(easymotion-overwin-f2)
+
+        " Turn on case-insensitive feature
+        let g:EasyMotion_smartcase = 1
+
+        " JK motions: Line motions
+        map <Leader>j <Plug>(easymotion-j)
+        map <Leader>k <Plug>(easymotion-k)
+    " }
+
+    " fzf {
+        nnoremap <silent> <C-f> :Files<CR>
+        nnoremap <silent> <Leader>f :Rg<CR>
+
+        nnoremap <silent> <Leader>f :Rg<CR>
+        nnoremap <silent> <Leader>/ :BLines<CR>
+        nnoremap <silent> <Leader>' :Marks<CR>
+        nnoremap <silent> <Leader>g :Commits<CR>
+        nnoremap <silent> <Leader>H :Helptags<CR>
+        nnoremap <silent> <Leader>hh :History<CR>
+        nnoremap <silent> <Leader>h: :History:<CR>
+        nnoremap <silent> <Leader>h/ :History/<CR> 
     " }
 " }
