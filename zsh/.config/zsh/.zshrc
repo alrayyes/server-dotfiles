@@ -66,4 +66,13 @@ alias g="git"
 alias mv="mv -i"
 alias rm="rm -i"
 
+# Colorize diff
+alias diff="diff --color"
+
+# Make fzf use ripgrep if available
+if type rg &> /dev/null; then
+    export FZF_DEFAULT_COMMAND='rg --files'
+    export FZF_DEFAULT_OPTS='-m --height 50% --border'
+fi
+
 neofetch
