@@ -251,7 +251,7 @@ if set -q FZF_COMPLETE
 end
 
 # Make fzf use ripgrep if available
-if type rg &> /dev/null
+if type -q rg
     export FZF_DEFAULT_COMMAND='rg --files'
     export FZF_DEFAULT_OPTS='-m --height 50% --border'
 end
