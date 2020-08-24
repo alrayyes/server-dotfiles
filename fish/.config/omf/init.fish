@@ -39,12 +39,12 @@ set -xg RUSTUP_HOME ~/.local/share/rustup
 set -xg GOPATH ~/.local/share/go
 
 # nvim alias
-abbr --add v "nvim"
-abbr --add sv "sudo nvim"
+abbr --add v 'nvim'
+abbr --add sv 'sudo nvim'
 
 # ls alias
-abbr --add ls "exa"
-abbr --add l "exa -al"
+abbr --add ls 'exa'
+abbr --add l 'exa -al'
 
 # git alaises
 abbr --add gpoat "git push origin --all && git push origin --tags"
@@ -55,6 +55,9 @@ abbr --add g "git"
 # Prevent mv & rm oopsies
 abbr --add mv "mv -i"
 abbr --add rm "rm -i"
+
+# Colorize diff
+abbr --add diff "diff --color"
 
 # Load lfcd wiith proper icons
 function lf
@@ -220,7 +223,6 @@ ex=:\
     /usr/bin/lf
 end
 
-
 # bat
 abbr --add bat "batcat"
 
@@ -246,4 +248,10 @@ if set -q FZF_COMPLETE
     if bind -M insert >/dev/null 2>/dev/null
         bind -M insert \t '__fzf_complete'
     end
+end
+
+# Make fzf use ripgrep if available
+if type rg &> /dev/null
+    export FZF_DEFAULT_COMMAND='rg --files'
+    export FZF_DEFAULT_OPTS='-m --height 50% --border'
 end
