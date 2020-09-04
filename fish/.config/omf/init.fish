@@ -219,7 +219,6 @@ ex=:\
 *.pdf=:\
 *.nix=:\
 "
-
     /usr/bin/lf
 end
 
